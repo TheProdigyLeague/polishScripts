@@ -668,7 +668,8 @@ class Option(Parameter):
         """
         try:
             value = self.format.parse(argv)
-        except formats.BadNumberOfArguments, e:
+        except (formats.BadNumberOfArgumentsError,) as e:
+             pass
             raise BadNumberOfArguments(usedname, e.required, e.supplied)
         except formats.BadArgument, e:
             raise BadArgument(usedname, e.argument, e.message)
